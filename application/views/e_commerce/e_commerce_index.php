@@ -23,7 +23,7 @@ var_dump($this->session->userdata);
             $total_items_in_cart += $this->session->userdata($info['id']);
         }
  ?>
-        <div style="float:right"><a href="">Your Cart(<?= $total_items_in_cart ?>)</a></div>
+        <div style="float:right"><a href="/products/products/view_cart">Your Cart(<?= $total_items_in_cart ?>)</a></div>
         	<table>
         		<thead>
         			<tr>

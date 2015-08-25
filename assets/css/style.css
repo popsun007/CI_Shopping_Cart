@@ -2,3 +2,8 @@ table td, table th
 {
 	padding: 5px 10px;
 }
+.break
+{
+	border: 1px solid grey;
+	margin: 5px 0px;
+}

@@ -23,26 +23,33 @@
         			</tr>
         		</thead>
         		<tbody>
-        		<form action="process.php" method="post">
+<?php 
+				$total = 0;
+				foreach($infos as $info)
+				{
+					$quantity = $this->session->userdata($info['id']);
+					$total += $quantity * $info['price'];
+					if($quantity > 0)
+					{
+ ?>
+        		<form action="/products/products/delete_item/<?= $info['id'] ?>" method="post">
         			<tr>
-        				<td>1</td>
-        				<td>Dojo Shrit</td>
-        				<td>$19.99</td>
+        				<td><?= $quantity ?></td>
+        				<td><?= $info['name'] ?></td>
+        				<td><?= $info['price'] ?></td>
         				<td><input type="submit" class="btn btn-danger btn-xs" value="Delete"></td>
         			</tr>
         		</form>
-        		<form action="process.php" method="post">
-        			<tr>
-        				<td>3</td>
-        				<td>Dojo Cup</td>
-        				<td>$39.99</td>
-        				<td><input type="submit" class="btn btn-danger btn-xs" value="Delete"></td>
-        			</tr>
-        		</form>	
+<?php 
+					}
+				}
+?>
+					<tr>
+						<td colspan="4"><div class="break"></div></td>
+					</tr>
         		</tbody>
         	</table>
-        	<div class="break"></div>
-        	<h4>Total  $59.97</h4>
+        	<h4>Total  $<?= $total ?></h4>
         	<br>
         	<h3>Billing Info</h3>
         	<table>
@@ -58,8 +65,11 @@
         			<td>Card #:</td>
         			<td><input type="text" name="card"></td>
         		</tr>
+        		<tr>
+        			<td><a href="/products/products"><button class="btn btn-default btn-sm">Go Back</button></a></td>
+        			<td><input type="submit" value="Order"></td>
+        		</tr>
         	</table>
-        	<input type="submit" value="Order">
         </div>
     </body>
 </html>	

@@ -19,4 +19,14 @@ class Products extends CI_Controller
 		$this->session->set_userdata($id, $quantity);
 		redirect('/');
 	}
+	public function view_cart()
+	{
+		$results['infos'] = $this->product->get_all_products();
+		$this->load->view('e_commerce/e_commerce_check_out', $results);
+	}
+	public function delete_item($id)
+	{
+		$this->session->unset_userdata($id);
+		redirect('/products/products/view_cart');
+	}
 }
