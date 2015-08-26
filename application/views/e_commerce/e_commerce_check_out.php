@@ -51,7 +51,7 @@
         	</table>
         	<h4>Total  $<?= $total ?></h4>
         	<br>
-        	<h3>Billing Info</h3>
+<!--         	<h3>Billing Info</h3>
         	<table>
         		<tr>
         			<td>Name:</td>
@@ -69,7 +69,21 @@
         			<td><a href="/products/products"><button class="btn btn-default btn-sm">Go Back</button></a></td>
         			<td><input type="submit" value="Order"></td>
         		</tr>
-        	</table>
+        	</table> -->
+        	<form action="/products/products/charge" method="POST">
+		    <script
+		      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		      data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+		      data-image="http://1.bp.blogspot.com/-ptMlLhaD-1c/VGeOns59HGI/AAAAAAAAVq8/clqVdPXfSyc/s1600/Clash-of-clans.png"
+		      data-name="CooooolShopping.com"
+		      data-description="Awesome Checking out"
+		      data-amount="<?= $total*100 ?>"
+		      data-locale="auto"
+		      data-label="Awesome Check Out"
+		      data-billing-address="true"
+		      >
+		    </script>
+</form>
         </div>
     </body>
 </html>	

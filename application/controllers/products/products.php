@@ -29,4 +29,24 @@ class Products extends CI_Controller
 		$this->session->unset_userdata($id);
 		redirect('/products/products/view_cart');
 	}
+	public function charge()
+	{
+		redirect('/products/products/success');
+	}
+	public function success()
+	{
+		$results = $this->product->get_all_products();
+		foreach($results as $result)
+		{
+			if($this->session->userdata($result['id']))
+			{
+				$this->session->unset_userdata($result['id']); //remove all the items in the cart!
+			}
+		}
+		$this->load->view('e_commerce/success');
+	}
+	public function continue_shopping()
+	{
+		redirect('/');
+	}
 }
